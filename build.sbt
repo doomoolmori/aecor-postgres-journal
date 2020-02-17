@@ -1,11 +1,11 @@
-import sbtrelease.ReleaseStateTransformations._
-import sbtrelease.Version.Bump
-
 name := "aecor-postgres-journal"
 
-organization := "io.aecor"
-
-scalaVersion := "2.12.10"
+inThisBuild(
+  Seq(
+    organization := "doomoolmori.com",
+    scalaVersion := "2.12.10",
+  )
+)
 
 lazy val kindProjectorVersion = "0.11.0"
 lazy val aecorVersion = "0.19.0"
@@ -49,68 +49,15 @@ scalacOptions ++= Seq(
 addCompilerPlugin("org.typelevel" %% "kind-projector" % kindProjectorVersion cross CrossVersion.full)
 
 parallelExecution in Test := false
+
 scalacOptions in (Compile, console) --= Seq("-Ywarn-unused:imports", "-Xfatal-warnings")
 
-publishMavenStyle := true
-
-releaseCrossBuild := true
-
-releaseCommitMessage := s"Set version to ${if (releaseUseGlobalVersion.value) (version in ThisBuild).value
-else version.value}"
-releaseVersionBump := sbtrelease.Version.Bump.Minor
-publishTo := {
-  val nexus = "http://nexus.market.local/repository/maven-"
-  if (isSnapshot.value)
-    Some("snapshots".at(nexus + "snapshots/"))
-  else
-    Some("releases".at(nexus + "releases/"))
-}
-
-releaseCrossBuild := true
-releaseVersionBump := Bump.Minor
-releaseCommitMessage := s"Set version to ${if (releaseUseGlobalVersion.value) (version in ThisBuild).value
-else version.value}"
-releaseIgnoreUntrackedFiles := true
-releasePublishArtifactsAction := PgpKeys.publishSigned.value
-homepage := Some(url("https://github.com/evotor/aecor-postgres-journal"))
 licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT"))
-publishMavenStyle := true
-publishArtifact in Test := false
-pomIncludeRepository := { _ =>
-  false
-}
-publishTo := {
-  val nexus = "https://oss.sonatype.org/"
-  if (isSnapshot.value)
-    Some("snapshots".at(nexus + "content/repositories/snapshots"))
-  else
-    Some("releases".at(nexus + "service/local/staging/deploy/maven2"))
-}
-autoAPIMappings := true
-scmInfo := Some(
-  ScmInfo(url("https://github.com/evotor/aecor-postgres-journal"),
-          "scm:git:git@github.com:evotor/aecor-postgres-journal.git")
-)
-pomExtra :=
-  <developers>
-    <developer>
-      <id>notxcain</id>
-      <name>Denis Mikhaylov</name>
-      <url>https://github.com/notxcain</url>
-    </developer>
-  </developers>
 
-releaseProcess := Seq[ReleaseStep](
-  checkSnapshotDependencies,
-  inquireVersions,
-  runClean,
-  runTest,
-  setReleaseVersion,
-  commitReleaseVersion,
-  tagRelease,
-  publishArtifacts,
-  setNextVersion,
-  commitNextVersion,
-  ReleaseStep(action = Command.process("sonatypeReleaseAll", _)),
-  pushChanges
-)
+// publishing
+sbtPlugin := true
+publishMavenStyle := false
+publishArtifact in Test := false
+bintrayOrganization := Some("doomoolmori")
+bintrayRepository := "aecor-postgres-journal"
+bintrayPackage := "aecor-postgres-journal"
