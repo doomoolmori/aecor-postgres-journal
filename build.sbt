@@ -2,7 +2,7 @@ name := "aecor-postgres-journal"
 
 inThisBuild(
   Seq(
-    organization := "doomoolmori.com",
+    organization := "com.doomoolmori",
     scalaVersion := "2.12.10",
   )
 )
@@ -56,8 +56,8 @@ licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT"))
 
 // publishing
 sbtPlugin := true
-publishMavenStyle := false
+publishMavenStyle := true
 publishArtifact in Test := false
 bintrayOrganization := Some("doomoolmori")
-bintrayRepository := "aecor-postgres-journal"
+bintrayRepository := "maven"
 bintrayPackage := "aecor-postgres-journal"
