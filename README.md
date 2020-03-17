@@ -4,5 +4,5 @@
 # Publish
 ```ssh
   $ sbt -Dbintray.user=yourBintrayUserName -Dbintray.pass=yourBintrayApiKey
-  sbt> publish
+  sbt> + publish
 ```
