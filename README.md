@@ -3,5 +3,6 @@
 
 # Publish
 ```ssh
-  $ sbt publish
+  $ sbt -Dbintray.user=yourBintrayUserName -Dbintray.pass=yourBintrayApiKey
+  sbt> publish
 ```
