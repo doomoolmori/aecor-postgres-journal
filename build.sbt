@@ -55,7 +55,7 @@ scalacOptions in (Compile, console) --= Seq("-Ywarn-unused:imports", "-Xfatal-wa
 licenses := Seq("MIT" -> url("http://opensource.org/licenses/MIT"))
 
 // publishing
-sbtPlugin := true
+sbtPlugin := false
 publishMavenStyle := true
 publishArtifact in Test := false
 bintrayOrganization := Some("doomoolmori")
