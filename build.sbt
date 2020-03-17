@@ -3,7 +3,7 @@ name := "aecor-postgres-journal"
 inThisBuild(
   Seq(
     organization := "com.doomoolmori",
-    scalaVersion := "2.12.10",
+    crossScalaVersions := Seq("2.13.1", "2.12.10")
   )
 )
 
