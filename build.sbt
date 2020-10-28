@@ -9,15 +9,15 @@ inThisBuild(
 
 lazy val kindProjectorVersion = "0.11.0"
 lazy val aecorVersion = "0.19.0"
-lazy val doobieVersion = "0.8.8"
-lazy val catsEffectVersion = "2.1.0"
+lazy val doobieVersion = "0.9.2"
+lazy val catsEffectVersion = "2.2.0"
 
 lazy val scalaCheckVersion = "1.14.0"
 lazy val scalaTestVersion = "3.1.0"
-lazy val catsVersion = "2.1.0"
+lazy val catsVersion = "2.2.0"
 lazy val circeVersion = "0.13.0"
 lazy val logbackVersion = "1.2.3"
-lazy val catsTaglessVersion = "0.11"
+lazy val catsTaglessVersion = "0.12"
 
 resolvers ++= Seq(
   Resolver.sonatypeRepo("public")
